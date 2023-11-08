@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\AssistanceRequestController;
 use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,4 +28,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::post('/sanctum/token', [AuthController::class, 'generateToken']);
 Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/assistance_request/getVehicles/client_id={id}', [AssistanceRequestController::class, 'getVehicles']);
+Route::get('/assistance_request/getAll/client_id={id}', [AssistanceRequestController::class, 'getAssistanceRequests']);
+
+Route::post('/assistance_request/clientRequestAssistance', [AssistanceRequestController::class, 'clientRequestAssistance']);
+
 
